@@ -48,8 +48,10 @@
       # if the src is currently in a draggable view, remove it from the collection
       if src_collection?
         src_collection.remove(src_model)
+        dst_view.trigger("remove")
       if dst_collection?
         dst_collection.add(src_model)
+        dst_view.trigger("add")
 
       @didDrop(src_view, dst_view)
 
@@ -59,8 +61,6 @@
 
     didDrop:(draggable_view, droppable_view)=>
       # override me
-      # default is to append draggable view to droppable view
-      draggable_view.$el.appendTo(droppable_view.$el)
 
   class Backbone.DroppableView extends Backbone.View
     droppable:(options={})=>

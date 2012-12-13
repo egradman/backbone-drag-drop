@@ -5,8 +5,6 @@ This is a solution to a common use-case for me: drag/drop, where each draggable 
 Dragging a draggable from one droppable to another automatically updates the underlying collection.  
 Updating the underlying collection automatically updates the view.
 
+When a draggable is dragged (to/from) a collection-backed droppable, ("add"/"remove") is triggered on the draggable view.
+
 This uses https://github.com/mikeplate/jquery-drag-drop-plugin and backbone
-
-## TODO:
-
-- use the collection comparator to keep the views sorted

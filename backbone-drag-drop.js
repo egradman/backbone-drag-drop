@@ -101,9 +101,11 @@
         dst_collection = dst.data('collection');
         if (src_collection != null) {
           src_collection.remove(src_model);
+          dst_view.trigger("remove");
         }
         if (dst_collection != null) {
           dst_collection.add(src_model);
+          dst_view.trigger("add");
         }
         return this.didDrop(src_view, dst_view);
       };
@@ -112,9 +114,7 @@
         return true;
       };
 
-      DraggableView.prototype.didDrop = function(draggable_view, droppable_view) {
-        return draggable_view.$el.appendTo(droppable_view.$el);
-      };
+      DraggableView.prototype.didDrop = function(draggable_view, droppable_view) {};
 
       return DraggableView;
 
