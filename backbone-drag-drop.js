@@ -33,15 +33,12 @@
       };
 
       DroppableCollection.prototype._add = function(model) {
-        console.log("add", model);
         if ((this.view != null) && model.view) {
-          console.log(this.view);
           return this.view.$el.append(model.view.$el);
         }
       };
 
       DroppableCollection.prototype._remove = function(model) {
-        console.log("remove", model);
         if (model.view != null) {
           return model.view.$el.detach();
         }
@@ -68,7 +65,6 @@
       }
 
       DraggableView.prototype.initialize = function() {
-        console.log("HERE!");
         return this.model.view = this;
       };
 
@@ -93,21 +89,21 @@
       };
 
       DraggableView.prototype._didDrop = function(src, dst) {
-        var dst_collection, dst_view, src_collection, src_model, src_view;
-        src_view = src.data('view');
-        dst_view = dst.data('view');
-        src_model = src.data('model');
-        src_collection = src_view.$el.parent().data('collection');
+        var draggable_model, draggable_view, droppable_view, dst_collection, src_collection;
+        draggable_view = src.data('view');
+        droppable_view = dst.data('view');
+        draggable_model = src.data('model');
+        src_collection = draggable_view.$el.parent().data('collection');
         dst_collection = dst.data('collection');
         if (src_collection != null) {
-          src_collection.remove(src_model);
-          dst_view.trigger("remove");
+          src_collection.remove(draggable_model);
+          droppable_view.trigger("remove");
         }
         if (dst_collection != null) {
-          dst_collection.add(src_model);
-          dst_view.trigger("add");
+          dst_collection.add(draggable_model);
+          droppable_view.trigger("add");
         }
-        return this.didDrop(src_view, dst_view);
+        return this.didDrop(draggable_view, droppable_view);
       };
 
       DraggableView.prototype.canDrop = function(droppable_view) {
