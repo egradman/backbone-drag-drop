@@ -28,7 +28,7 @@
 
     _canDrop:(el)=>
       droppable_view = $(el).data('view')
-      if not droppable_view
+      if not droppable_view or not (droppable_view instanceof Backbone.DroppableView)
         return false
 
       return droppable_view.canDrop(@) and @canDrop(droppable_view)

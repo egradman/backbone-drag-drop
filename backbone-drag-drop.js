@@ -82,7 +82,7 @@
       DraggableView.prototype._canDrop = function(el) {
         var droppable_view;
         droppable_view = $(el).data('view');
-        if (!droppable_view) {
+        if (!droppable_view || !(droppable_view instanceof Backbone.DroppableView)) {
           return false;
         }
         return droppable_view.canDrop(this) && this.canDrop(droppable_view);
