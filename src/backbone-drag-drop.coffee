@@ -35,8 +35,8 @@
 
     _didDrop:(src, dst)=>
       draggable_view = src.data('view')
-      droppable_view = dst.data('view')
       draggable_model = src.data('model')
+      droppable_view = dst.data('view')
       src_collection = draggable_view.$el.parent().data('collection')
       dst_collection = dst.data('collection')
 
@@ -48,6 +48,9 @@
       if dst_collection?
         dst_collection.add(draggable_model)
         droppable_view.trigger("add")
+
+      draggable_view.trigger("drag")
+      draggable_model.trigger("drag")
 
       @didDrop(draggable_view, droppable_view)
 

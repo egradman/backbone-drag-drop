@@ -91,8 +91,8 @@
       DraggableView.prototype._didDrop = function(src, dst) {
         var draggable_model, draggable_view, droppable_view, dst_collection, src_collection;
         draggable_view = src.data('view');
-        droppable_view = dst.data('view');
         draggable_model = src.data('model');
+        droppable_view = dst.data('view');
         src_collection = draggable_view.$el.parent().data('collection');
         dst_collection = dst.data('collection');
         if (src_collection != null) {
@@ -103,6 +103,8 @@
           dst_collection.add(draggable_model);
           droppable_view.trigger("add");
         }
+        draggable_view.trigger("drag");
+        draggable_model.trigger("drag");
         return this.didDrop(draggable_view, droppable_view);
       };
 

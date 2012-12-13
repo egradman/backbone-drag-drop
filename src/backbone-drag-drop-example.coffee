@@ -28,6 +28,9 @@ $ ->
     drag_view.draggable
       makeClone: true
 
+    drag_view.on "drag", ()->
+      console.log "example: DRAG"
+
     drag_views.push(drag_view)
 
   window.drop_collections = drop_collections

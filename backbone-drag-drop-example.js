@@ -31,6 +31,9 @@
       drag_view.draggable({
         makeClone: true
       });
+      drag_view.on("drag", function() {
+        return console.log("example: DRAG");
+      });
       drag_views.push(drag_view);
     }
     return window.drop_collections = drop_collections;

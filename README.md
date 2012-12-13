@@ -7,4 +7,6 @@ Updating the underlying collection automatically updates the view.
 
 When a draggable is dragged (to/from) a collection-backed droppable, ("add"/"remove") is triggered on the draggable view.
 
+When a draggable is successfully dragged, both the model and the view are triggered "drag"
+
 This uses https://github.com/mikeplate/jquery-drag-drop-plugin and backbone
