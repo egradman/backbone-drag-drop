@@ -29,3 +29,5 @@ $ ->
       makeClone: true
 
     drag_views.push(drag_view)
+
+  window.drop_collections = drop_collections

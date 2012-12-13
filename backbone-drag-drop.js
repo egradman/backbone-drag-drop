@@ -21,8 +21,31 @@
       __extends(DroppableCollection, _super);
 
       function DroppableCollection() {
+        this._remove = __bind(this._remove, this);
+
+        this._add = __bind(this._add, this);
         return DroppableCollection.__super__.constructor.apply(this, arguments);
       }
+
+      DroppableCollection.prototype.initialize = function() {
+        this.on("add", this._add);
+        return this.on("remove", this._remove);
+      };
+
+      DroppableCollection.prototype._add = function(model) {
+        console.log("add", model);
+        if ((this.view != null) && model.view) {
+          console.log(this.view);
+          return this.view.$el.append(model.view.$el);
+        }
+      };
+
+      DroppableCollection.prototype._remove = function(model) {
+        console.log("remove", model);
+        if (model.view != null) {
+          return model.view.$el.detach();
+        }
+      };
 
       return DroppableCollection;
 
@@ -43,6 +66,11 @@
         this.draggable = __bind(this.draggable, this);
         return DraggableView.__super__.constructor.apply(this, arguments);
       }
+
+      DraggableView.prototype.initialize = function() {
+        console.log("HERE!");
+        return this.model.view = this;
+      };
 
       DraggableView.prototype.draggable = function(options) {
         if (options == null) {
@@ -107,7 +135,8 @@
           options = {};
         }
         this.$el.data('view', this);
-        return this.$el.data('collection', this.collection);
+        this.$el.data('collection', this.collection);
+        return this.collection.view = this;
       };
 
       DroppableView.prototype.canDrop = function(draggable_view) {

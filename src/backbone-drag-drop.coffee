@@ -2,8 +2,26 @@
   class Backbone.DraggableModel extends Backbone.Model
 
   class Backbone.DroppableCollection extends Backbone.Collection
+    initialize:->
+      @on "add", @_add
+      @on "remove", @_remove
+
+    _add:(model)=>
+      console.log "add", model
+      if @view? and model.view
+        console.log @view
+        @view.$el.append(model.view.$el)
+
+    _remove:(model)=>
+      console.log "remove", model
+      if model.view?
+        model.view.$el.detach()
   
   class Backbone.DraggableView extends Backbone.View
+    initialize:->
+      console.log "HERE!"
+      @model.view = @ # so updates to the underlying collection can affect the model
+
     draggable:(options={})=>
       options.canDrop = @_canDrop
       options.didDrop = @_didDrop
@@ -48,6 +66,8 @@
     droppable:(options={})=>
       @$el.data('view', @)
       @$el.data('collection', @collection)
+
+      @collection.view = @ # so collection changes can update the views
 
     canDrop:(draggable_view)=>
       return true

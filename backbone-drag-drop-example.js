@@ -2,7 +2,7 @@
 (function() {
 
   $(function() {
-    var drag_model, drag_models, drag_view, drag_views, drop_collection, drop_collections, drop_view, drop_views, i, _i, _j, _results;
+    var drag_model, drag_models, drag_view, drag_views, drop_collection, drop_collections, drop_view, drop_views, i, _i, _j;
     drop_collections = [];
     drop_views = [];
     for (i = _i = 0; _i <= 1; i = ++_i) {
@@ -18,7 +18,6 @@
     }
     drag_models = [];
     drag_views = [];
-    _results = [];
     for (i = _j = 0; _j <= 7; i = ++_j) {
       drag_model = new Backbone.DraggableModel({
         id: "drag" + i
@@ -32,9 +31,9 @@
       drag_view.draggable({
         makeClone: true
       });
-      _results.push(drag_views.push(drag_view));
+      drag_views.push(drag_view);
     }
-    return _results;
+    return window.drop_collections = drop_collections;
   });
 
 }).call(this);
