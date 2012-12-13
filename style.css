@@ -1,0 +1,38 @@
+div.header {
+    background-color: #aaf;
+    background-image: -moz-linear-gradient(top, #88d 0%, #88d 50%, #99d 50%, #99d 100%);
+    background-image: -o-linear-gradient(top, #88d 0%, #88d 50%, #99d 50%, #99d 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #88d), color-stop(0.5, #88d), color-stop(0.5, #99d), color-stop(1, #99d));
+    background-size: 4px 4px;
+    border-bottom: 2px solid #339;
+}
+h1 {
+    margin: 0px auto;
+    max-width: 570px;
+    padding: 10px 10px 10px 20px;
+    text-shadow: 1px 1px 0px #bbe;
+    font-size: 18pt;
+}
+
+.droppable {
+  float: left;
+  width: 110px;
+  height: 600px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.draggable {
+    margin: 25px;
+    width: 60px;
+    height: 50px;
+    background-color: #bbe;
+    background-image: -moz-linear-gradient(-45deg, #eef, #88d);
+    background-image: -o-linear-gradient(-45deg, #eef, #88d);
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #eef), color-stop(1, #88d));
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
